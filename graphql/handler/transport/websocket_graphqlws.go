@@ -3,6 +3,7 @@ package transport
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 
 	"github.com/gorilla/websocket"
 )
@@ -100,6 +101,7 @@ func (t graphqlwsMessageType) MarshalText() ([]byte, error) {
 }
 
 func (m graphqlwsMessage) toMessage() (message, error) {
+	log.Println("#### SENDING MESSAGE", m.Type)
 	var t messageType
 	var err error
 	switch m.Type {
